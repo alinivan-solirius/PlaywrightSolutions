@@ -25,5 +25,4 @@ test(`Second test solution`, async ({ page }) => {
         .toContainText(`Information based on your answers`);
     await expect(page.locator(`.summary`))
         .toHaveText(`The statutory holiday entitlement is 28 days holiday.`);
-
 });
