@@ -1,6 +1,7 @@
 import { Page } from 'playwright';
 import {expect} from "@playwright/test";
 import workedPerWeek_content from "../content/workedPerWeek_content";
+import axeTest from "../accessibilityTestHelper";
 
 class WorkedPerWeekPage {
     private readonly title: string;
@@ -18,6 +19,7 @@ class WorkedPerWeekPage {
             expect(page.locator(this.title)).toHaveText(workedPerWeek_content.pageTitle),
             expect(page.locator(this.text)).toContainText(workedPerWeek_content.divText),
         ]);
+        await axeTest(page);
     }
 
     async continueOn(page: Page): Promise<void> {

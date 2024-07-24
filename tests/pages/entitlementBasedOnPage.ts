@@ -1,6 +1,7 @@
 import { Page } from 'playwright';
 import {expect} from "@playwright/test";
 import entitlementBasedOn_content from "../content/entitlementBasedOn_content";
+import axeTest from "../accessibilityTestHelper";
 
 class EntitlementBasedOnPage {
     private readonly title: string;
@@ -31,6 +32,7 @@ class EntitlementBasedOnPage {
             expect(page.locator(this.radio4)).toContainText(entitlementBasedOn_content.radio4),
             expect(page.locator(this.radio5)).toContainText(entitlementBasedOn_content.radio5),
         ]);
+        await axeTest(page);
     }
 
     async continueOn(page: Page): Promise<void> {

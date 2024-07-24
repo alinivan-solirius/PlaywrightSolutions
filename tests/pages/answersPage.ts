@@ -1,6 +1,7 @@
 import { Page } from 'playwright';
 import {expect} from "@playwright/test";
 import answers_content from "../content/answers_content";
+import axeTest from "../accessibilityTestHelper";
 
 class AnswersPage {
     private readonly title: string;
@@ -17,6 +18,7 @@ class AnswersPage {
             expect(page.locator(this.title)).toContainText(answers_content.pageTitle),
             expect(page.locator(this.text)).toContainText(answers_content.divText),
         ]);
+        await axeTest(page);
     }
 }
 

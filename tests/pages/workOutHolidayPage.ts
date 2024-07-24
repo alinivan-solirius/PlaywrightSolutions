@@ -1,6 +1,7 @@
 import { Page } from 'playwright';
 import {expect} from "@playwright/test";
 import workOutHoliday_content from "../content/workOutHoliday_content";
+import axeTest from "../accessibilityTestHelper";
 
 class WorkOutHolidayPage {
     private readonly title: string;
@@ -25,6 +26,7 @@ class WorkOutHolidayPage {
             expect(page.locator(this.radio3)).toContainText(workOutHoliday_content.radio3),
             expect(page.locator(this.radio4)).toContainText(workOutHoliday_content.radio4),
         ]);
+        await axeTest(page);
     }
 
     async continueOn(page: Page): Promise<void> {

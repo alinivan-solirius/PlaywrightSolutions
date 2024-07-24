@@ -5,6 +5,7 @@
   "license": "MIT",
   "packageManager": "yarn@4.3.1",
   "devDependencies": {
+    "@axe-core/playwright": "^4.9.1",
     "@playwright/test": "^1.45.3",
     "@types/node": "^20.14.11",
     "playwright": "^1.45.3",
