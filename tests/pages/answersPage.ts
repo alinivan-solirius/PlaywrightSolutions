@@ -5,18 +5,23 @@ import axeTest from "../accessibilityTestHelper";
 
 class AnswersPage {
     private readonly title: string;
-    private readonly text: string;
+    private readonly textAnswers: string[];
 
     constructor() {
         this.title = `.govuk-heading-xl`
-        this.text = `.summary`
+        this.textAnswers = [
+            `.summary`, 
+            `.govuk-govspeak p:first-of-type`,
+            `.summary`, 
+        ];
     }
 
-    async checkPageLoads(page: Page): Promise<void> {
+    async checkPageLoads(page: Page, index: number): Promise<void> {
         // Check elements of the page
         await Promise.all([
             expect(page.locator(this.title)).toContainText(answers_content.pageTitle),
-            expect(page.locator(this.text)).toContainText(answers_content.divText),
+            expect(page.locator(this.textAnswers[index - 1]))
+            .toContainText(answers_content.divText[index - 1]),
         ]);
         await axeTest(page);
     }

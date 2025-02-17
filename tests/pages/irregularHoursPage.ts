@@ -30,9 +30,8 @@ class IrregularHoursPage {
         await axeTest(page);
     }
 
-    async continueOn(page: Page): Promise<void> {
-        await page.click('label[for="response-1"]');
-        // Click the continue button
+    async continueOn(page: Page, irrelgularHours: boolean): Promise<void> {
+        await page.click(irrelgularHours ? this.radioYes : this.radioNo);
         await page.getByRole("button", { name: "Continue" }).click();
     }
 
